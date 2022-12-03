@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-      Duration(seconds: 1),
+      Duration(seconds: 2),
       () => Navigator.of(context)
           .push(MaterialPageRoute(builder: ((context) => ViewNotes()))),
     );
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: CircularProgressIndicator(
-          color: Colors.orange,
+          color: Colors.green,
         ),
       ),
     );

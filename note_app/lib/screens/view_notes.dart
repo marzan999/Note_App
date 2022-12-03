@@ -46,11 +46,12 @@ class _ViewNotesState extends State<ViewNotes> {
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
+            leading: Text(''),
             title: Text(
               "View Notes",
-              style: TextStyle(color: Colors.black, fontSize: 25),
+              style: TextStyle(color: Colors.white, fontSize: 25),
             ),
-            backgroundColor: Colors.transparent,
+            backgroundColor: Color.fromARGB(255, 104, 158, 106),
             elevation: 0,
             // backgroundColor: Color.fromARGB(255, 182, 120, 28),
           ),
@@ -78,7 +79,7 @@ class _ViewNotesState extends State<ViewNotes> {
                       Map<String, dynamic> data =
                           document.data()! as Map<String, dynamic>;
                       return Container(
-                        height: 300,
+                        height: 310,
                         child: Card(
                           elevation: 5,
                           child: Stack(children: [
@@ -86,96 +87,111 @@ class _ViewNotesState extends State<ViewNotes> {
                               children: [
                                 Stack(
                                   children: [
-                                    Container(
-                                      child: Stack(
-                                        children: [
-                                          // Image.network(
-                                          //   data["img"],
-                                          //   height: 300,
-                                          //   width: double.infinity,
-                                          //   fit: BoxFit.cover,
-                                          // ),
-                                          Positioned(
-                                            child: Container(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  MaterialButton(
-                                                    color: Colors.white,
-                                                    height: 40,
-                                                    minWidth: 40,
-                                                    onPressed: (() {
-                                                      updatenewCourse();
-                                                    }),
-                                                    child: Icon(
-                                                      Icons.edit,
-                                                      size: 25,
-                                                      color: Colors.blue,
-                                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        height: 280,
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: Color.fromARGB(
+                                                255, 219, 219, 219)),
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    'Title: ' +
+                                                        data["_courseName"],
+                                                    style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontSize: 40),
                                                   ),
-                                                  SizedBox(
-                                                    width: 5,
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    'Description: ' +
+                                                        data["_courseFee"],
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 30),
                                                   ),
-                                                  MaterialButton(
-                                                    color: Colors.white,
-                                                    height: 40,
-                                                    minWidth: 40,
-                                                    onPressed: (() {
-                                                      deleteData(document.id);
-                                                    }),
-                                                    child: Icon(
-                                                      Icons.delete,
-                                                      size: 25,
-                                                      color: Colors.red,
-                                                    ),
-                                                  ),
-                                                ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      child: Container(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            MaterialButton(
+                                              color: Colors.white,
+                                              height: 40,
+                                              minWidth: 40,
+                                              onPressed: (() {
+                                                updatenewCourse();
+                                              }),
+                                              child: Icon(
+                                                Icons.edit,
+                                                size: 25,
+                                                color: Colors.green,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            MaterialButton(
+                                              color: Colors.white,
+                                              height: 40,
+                                              minWidth: 40,
+                                              onPressed: (() {
+                                                deleteData(document.id);
+                                              }),
+                                              child: Icon(
+                                                Icons.delete,
+                                                size: 25,
+                                                color: Colors.red,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  height: 50,
-                                  width: 250,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color:
-                                          Color.fromARGB(255, 123, 136, 135)),
-                                  child: Center(
-                                    child: Text(
-                                      'Title: ' + data["_courseName"],
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 30),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  height: 50,
-                                  width: 250,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color:
-                                          Color.fromARGB(255, 123, 136, 135)),
-                                  child: Center(
-                                    child: Text(
-                                      'Description: ' + data["_courseFee"],
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 30),
-                                    ),
-                                  ),
-                                )
+                                // SizedBox(
+                                //   height: 10,
+                                // ),
+                                // Container(
+                                //   height: 50,
+                                //   width: 250,
+                                //   decoration: BoxDecoration(
+                                //       borderRadius: BorderRadius.circular(15),
+                                //       color:
+                                //           Color.fromARGB(255, 123, 136, 135)),
+                                //   child: Center(
+                                //     child: Text(
+                                //       'Description: ' + data["_courseFee"],
+                                //       style: TextStyle(
+                                //           color: Colors.white, fontSize: 30),
+                                //     ),
+                                //   ),
+                                // )
                               ],
                             )
                           ]),
